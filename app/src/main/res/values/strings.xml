@@ -3,4 +3,6 @@
     <string name="welcome_to_reflex">Welcome to Reflex!</string>
     <string name="play">PLAY</string>
     <string name="reflex_logo">Reflex logo</string>
+    <string name="login">Login</string>
+    <string name="register">register</string>
 </resources>
