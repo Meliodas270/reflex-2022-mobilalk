@@ -17,7 +17,7 @@
 
 
     <EditText
-        android:id="@+id/editTextTextUsername"
+        android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/registerTextView"
@@ -25,15 +25,15 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
         android:ems="10"
-        android:hint="@string/username"
-        android:inputType="textPersonName"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
         android:textSize="20sp" />
 
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextTextUsername"
+        android:layout_below="@+id/editTextEmail"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"

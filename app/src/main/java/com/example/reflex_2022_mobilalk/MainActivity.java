@@ -16,6 +16,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onPlayButtonPushed(View view) {
+        Intent playIntent = new Intent(this, PlayActivity.class);
+
+        playIntent.putExtra("verysecretkey", KEY);
+        startActivity(playIntent);
     }
 
     public void onLoginButtonPushed(View view) {

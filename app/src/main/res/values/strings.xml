@@ -10,10 +10,12 @@
     <string name="password">Password</string>
     <string name="password_again">Password again</string>
     <string name="cancel">Cancel</string>
+    <string name="let_s_play">Let\'s play</string>
+    <string name="back">Back</string>
     <string-array name="who">
         <item>Hallgató</item>
         <item>Oktató</item>
         <item>Egyéb</item>
     </string-array>
-    
+
 </resources>
