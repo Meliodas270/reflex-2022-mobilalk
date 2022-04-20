@@ -5,18 +5,15 @@
     <string name="reflex_logo">Reflex logo</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
-    <string name="username">Felhasználónév</string>
-    <string name="email">Email cím</string>
-    <string name="password">Jelszó</string>
-    <string name="password_again">Jelszó újra</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="password_again">Password again</string>
     <string name="cancel">Cancel</string>
+    <string-array name="who">
+        <item>Hallgató</item>
+        <item>Oktató</item>
+        <item>Egyéb</item>
+    </string-array>
+    
 </resources>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "214793134006",
+    "project_id": "reflex-2022-mobilalk",
+    "storage_bucket": "reflex-2022-mobilalk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214793134006:android:f40f5b910c8c899b476b17",
+        "android_client_info": {
+          "package_name": "com.example.reflex_2022_mobilalk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214793134006-gf9pu5n9imctc60inrkolsj283lc26cf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDZfD15FPNaRGL2ew73_X6HiTSJcayBMU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "214793134006-gf9pu5n9imctc60inrkolsj283lc26cf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

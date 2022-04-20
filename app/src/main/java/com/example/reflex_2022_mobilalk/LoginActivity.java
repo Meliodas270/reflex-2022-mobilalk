@@ -4,8 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 public class LoginActivity extends AppCompatActivity {
+
+    EditText editTextUsername;
+    EditText editTextPassword;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +23,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onLoginButtonPushed(View view) {
+        editTextUsername = findViewById(R.id.editTextUsername);
+        editTextPassword = findViewById(R.id.editTextPassword);
+
         // TODO login megvalósítása
     }
 

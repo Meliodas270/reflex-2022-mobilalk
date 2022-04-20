@@ -17,7 +17,7 @@
 
 
     <EditText
-        android:id="@+id/editTextTextUsername"
+        android:id="@+id/editTextUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/registerTextView"
@@ -28,10 +28,10 @@
         android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/editTextTextEmail"
+        android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextTextUsername"
+        android:layout_below="@+id/editTextUsername"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="@string/email"
@@ -42,7 +42,7 @@
         android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextTextEmail"
+        android:layout_below="@+id/editTextEmail"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="@string/password"
@@ -88,5 +88,6 @@
             android:onClick="onCancel"
             android:text="@string/cancel" />
     </LinearLayout>
+
 
 </RelativeLayout>
