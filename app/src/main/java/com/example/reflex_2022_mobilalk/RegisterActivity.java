@@ -1,21 +1,16 @@
 package com.example.reflex_2022_mobilalk;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
     private static final int KEY = 42;
@@ -26,6 +21,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText editTextEmail;
     EditText editTextPassword;
     EditText editTextPasswordAgain;
+    UserDAO userDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         editTextPasswordAgain = findViewById(R.id.editTextPasswordAgain);
+        userDao = new UserDAO();
     }
 
     public void onRegisterButtonPushed(View view) {
@@ -98,31 +95,22 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    User user = new User(userName, email, password);
-                    FirebaseDatabase.getInstance("https://reflex-2022-mobilalk-default-rtdb.europe-west1.firebasedatabase.app/").getReference("Users")
-                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
+        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                User user = new User(userName, email, password);
+                userDao.add(user, FirebaseAuth.getInstance().getUid()).addOnCompleteListener(task1 -> {
+                            if (task1.isSuccessful()) {
                                 Toast.makeText(RegisterActivity.this, "User registered successfully!", Toast.LENGTH_LONG).show();
 
                                 redirectToPlayActivity();
                             } else {
                                 Toast.makeText(RegisterActivity.this, "Failed to register user :(", Toast.LENGTH_LONG).show();
                             }
-                        }
-                    });
-                } else {
-                    Toast.makeText(RegisterActivity.this, "Failed to register user :(", Toast.LENGTH_LONG).show();
-                }
+                        });
+            } else {
+                Toast.makeText(RegisterActivity.this, "Failed to register user :(", Toast.LENGTH_LONG).show();
             }
         });
-
-        //TODO átirányítás a játékokhoz
     }
 
     public void onCancel(View view) {
@@ -134,5 +122,16 @@ public class RegisterActivity extends AppCompatActivity {
 
         playIntent.putExtra("verysecretkey", KEY);
         startActivity(playIntent);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+        if (keyCode == KeyEvent.KEYCODE_BACK ) {
+            Intent mainIntent = new Intent(this, MainActivity.class);
+            startActivity(mainIntent);
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="l1q1">Who is the maker of this game?</string>
+    <string name="l1a1">Kosik Roland, Roland Kosik, Roland, Roli</string>
+
+    <string name="l1q2">Whats the name of the app?</string>
+    <string name="l1a2">REFLEX, reflex, Reflex</string>
+
+    <string name="l1q3">What is the current year?</string>
+    <string name="l1a3">2022</string>
+</resources>

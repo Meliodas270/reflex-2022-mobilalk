@@ -10,6 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Reflex2022mobilalk">
         <activity
+            android:name=".RanglistActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GameEndActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GameScreenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GameOverviewActivity"
+            android:exported="false" />
+        <activity
             android:name=".PlayActivity"
             android:exported="false" />
         <activity

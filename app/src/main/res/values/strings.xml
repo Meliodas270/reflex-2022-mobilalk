@@ -10,12 +10,20 @@
     <string name="password">Password</string>
     <string name="password_again">Password again</string>
     <string name="cancel">Cancel</string>
-    <string name="let_s_play">Let\'s play</string>
+    <string name="let_s_play">Let\'s get started with REFLEX!</string>
     <string name="back">Back</string>
-    <string-array name="who">
-        <item>Hallgató</item>
-        <item>Oktató</item>
-        <item>Egyéb</item>
-    </string-array>
+    <string name="log_out">Log out</string>
+    <string name="not_logged_in">Not logged in</string>
+    <string name="description">You will have to answer questions in given time.\n\nThe more you answer, the more points you will get.\n\nPlease enjoy!\n\n(Note that this project is in a development state)</string>
+    <string name="layer_one">LAYER ONE</string>
+    <string name="done">done!</string>
+    <string name="back_to_profile">Back To Profile</string>
+    <string name="profile">Profile</string>
+    <string name="layers">Layers</string>
+    <string name="ranglist">Ranglist</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
+    <!--    \nYou can choose the difficulty level of each layer, by changing the time you have to answer the questions.\n\nIf you solve a layer on a higher difficulty, you will get bonus points.\nThe higher you go in the layers, the questions will become more complicated and require more thinking.-->
 
 </resources>

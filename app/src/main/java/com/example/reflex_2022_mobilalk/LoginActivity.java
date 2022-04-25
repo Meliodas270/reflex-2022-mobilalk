@@ -1,18 +1,15 @@
 package com.example.reflex_2022_mobilalk;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
@@ -20,6 +17,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText editTextEmail;
     EditText editTextPassword;
+    UserDAO userDao;
 
     FirebaseAuth mAuth;
 
@@ -36,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.editTextPassword);
 
         mAuth = FirebaseAuth.getInstance();
+        userDao = new UserDAO();
     }
 
     public void onLoginButtonPushed(View view) {
@@ -66,14 +65,11 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    redirectToPlayActivity();
-                } else {
-                    Toast.makeText(LoginActivity.this, "Failed to login user :(", Toast.LENGTH_LONG).show();
-                }
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                redirectToPlayActivity();
+            } else {
+                Toast.makeText(LoginActivity.this, "Failed to login user :(", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -89,5 +85,17 @@ public class LoginActivity extends AppCompatActivity {
 
         playIntent.putExtra("verysecretkey", KEY);
         startActivity(playIntent);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+        if (keyCode == KeyEvent.KEYCODE_BACK ) {
+            finish();
+            Intent mainIntent = new Intent(this, MainActivity.class);
+            startActivity(mainIntent);
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 }
