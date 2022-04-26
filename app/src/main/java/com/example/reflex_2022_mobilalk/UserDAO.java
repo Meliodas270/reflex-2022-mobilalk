@@ -21,13 +21,15 @@ import java.util.HashMap;
 public class UserDAO {
     private DatabaseReference ref;
     private User currentUser;
-    private String userUID;
+    private String userUID, username;
     private FirebaseDatabase db;
     private FirebaseUser user;
 
     public UserDAO() {
         db = FirebaseDatabase.getInstance("https://reflex-2022-mobilalk-default-rtdb.europe-west1.firebasedatabase.app/");
         ref = db.getReference(User.class.getSimpleName());
+
+        username = "hollohat";
 
         addListener();
     }
@@ -85,6 +87,35 @@ public class UserDAO {
         }
 
         return currentUser;
+    }
+
+    public Task<Void> update() {
+        return ref.child("0").setValue(new Point()).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                remove("0");
+            }
+        });
+    }
+
+    public Task<DataSnapshot> getUsernameByUIDFromDatabase(String uid) {
+        return ref.child(uid).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                    username = task.getResult().getValue(User.class).getUsername();
+                    Log.d("firebase user: ", String.valueOf(task.getResult().getValue()));
+                }
+            }
+        });
+    }
+
+    public String getUsernameByUID(){
+        return username;
     }
 
     public void setCurrentUser(User currentUser) {

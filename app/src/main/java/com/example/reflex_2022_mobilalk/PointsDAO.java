@@ -1,5 +1,6 @@
 package com.example.reflex_2022_mobilalk;
 
+import android.provider.ContactsContract;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -14,82 +15,68 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class PointsDAO {
     private DatabaseReference ref;
     private FirebaseDatabase db;
+    private Point p;
+    private List<Point> ps;
 
     public PointsDAO() {
         db = FirebaseDatabase.getInstance("https://reflex-2022-mobilalk-default-rtdb.europe-west1.firebasedatabase.app/");
         ref = db.getReference("Points");
+        p = new Point();
+        ps = new ArrayList<>();
 
-//        addListener();
-    }
-
-    /*
-    public void addListener() {
-        if (user != null) {
-            userUID = user.getUid();
-            ref.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    currentUser = snapshot.getValue(User.class);
-                    Log.i("firebase", "User loaded: " + currentUser);
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    Log.w("firebase", "loadPost:onCancelled", error.toException());
-                }
-            });
-
-            Log.i("firebase", "nem null " + user.getEmail() + ", " + currentUser);
-
-        } else {
-            Log.i("firebase", "null");
-        }
-    }
-
-    public Task<Void> add(User user, String userUID) {
-        return ref.child(userUID).setValue(user);
-    }
-
-    public Task<Void> update(String key, HashMap<String, Object> map) {
-        return ref.child(key).updateChildren(map);
-    }
-
-    public void updateUID(String userUID) {
         addListener();
     }
 
-    public HashMap<String, Object> getHash() {
-        HashMap<String, Object> hs = new HashMap<>();
-        hs.put("email", user.getEmail());
-        return hs;
+    public Task<Void> add(Point p) {
+        return ref.child(String.valueOf(System.currentTimeMillis())).setValue(p);
     }
 
-    public User getCurrentUser() {
-        if (currentUser == null) {
-            update(user.getUid(), getHash()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    Log.i("firebase", "updated " + user.getEmail() + ", " + currentUser);
-                }
-            });
-        }
-
-        return currentUser;
-    }
-
-    public void setCurrentUser(User currentUser) {
-        this.currentUser = currentUser;
-    }
 
     public Task<Void> remove(String key) {
         return ref.child(key).removeValue();
     }
 
-     */
+    public Task<Void> update() {
+        return ref.child("0").setValue(new Point()).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                remove("0");
+            }
+        });
+    }
+
+    public void addListener() {
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot point : snapshot.getChildren()) {
+                    Point tmp = point.getValue(Point.class);
+                    Log.i("firebaseize", tmp.toString());
+
+                    ps.add(point.getValue(Point.class));
+                }
+
+                Log.i("firebase", "Points loaded!");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w("firebase", "loadPost:onCancelled", error.toException());
+            }
+        });
+    }
+
+    public List<Point> getPoints() {
+        return ps;
+    }
+
+
 }
