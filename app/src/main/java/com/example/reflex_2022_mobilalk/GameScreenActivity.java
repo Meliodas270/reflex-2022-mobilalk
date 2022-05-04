@@ -23,6 +23,7 @@ public class GameScreenActivity extends AppCompatActivity {
     TextView questionNumber, time, question;
     EditText answer;
     List<String> correctAnswer;
+    CountDownTimer ct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,7 @@ public class GameScreenActivity extends AppCompatActivity {
         questionNum = 1;
         layer = 1;
 
-        new CountDownTimer(getIntent().getIntExtra("time", 0) * 1000L, 1000) {
+        ct = new CountDownTimer(getIntent().getIntExtra("time", 0) * 1000L, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 time.setText(String.format("%d", millisUntilFinished / 1000));
@@ -90,12 +91,4 @@ public class GameScreenActivity extends AppCompatActivity {
             return false;
         });
     }
-
-    private void nextQuestion() {
-        if (correctAnswer.contains(answer.getText().toString())) {
-            points += 10;
-        }
-    }
-
-
 }

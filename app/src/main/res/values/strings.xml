@@ -23,6 +23,8 @@
     <string name="ranglist">Ranglist</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="notifications">Értesítések</string>
+    <string name="channel_description">valami leírás stuff</string>
 
     <!--    \nYou can choose the difficulty level of each layer, by changing the time you have to answer the questions.\n\nIf you solve a layer on a higher difficulty, you will get bonus points.\nThe higher you go in the layers, the questions will become more complicated and require more thinking.-->
 

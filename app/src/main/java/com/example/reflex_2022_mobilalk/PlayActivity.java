@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -13,6 +16,8 @@ import com.google.firebase.auth.FirebaseAuth;
 public class PlayActivity extends AppCompatActivity {
 
     FirebaseAuth mAuth;
+    Button bigPlayButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +29,11 @@ public class PlayActivity extends AppCompatActivity {
         }
 
         mAuth = FirebaseAuth.getInstance();
+        bigPlayButton = findViewById(R.id.bigPlayButton);
+
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.zoomin);
+
+        bigPlayButton.startAnimation(animation);
     }
 
     public void onBack(View view) {
