@@ -38,21 +38,13 @@ public class RanglistActivity extends AppCompatActivity {
                 pointsString = new ArrayList<>();
 
                 for (Point p : ps) {
-                    Log.i("pointsp", p.toString());
                     pointsString.add(p.toString());
                 }
-
-                Log.i("pointss", pointsString.toString());
 
                 rvAdapter = new RVAdapter(RanglistActivity.this, pointsString);
                 rv.setAdapter(rvAdapter);
                 rv.setLayoutManager(new LinearLayoutManager(RanglistActivity.this));
             }
         });
-
-
-
-
-        //TODO ALL
     }
 }

@@ -74,6 +74,7 @@ public class GameScreenActivity extends AppCompatActivity {
                 Intent endIntent = new Intent(this, GameEndActivity.class);
                 endIntent.putExtra("verysecretkey", KEY);
                 endIntent.putExtra("points", getIntent().getIntExtra("time", 0));
+                finish();
                 startActivity(endIntent);
         }
 

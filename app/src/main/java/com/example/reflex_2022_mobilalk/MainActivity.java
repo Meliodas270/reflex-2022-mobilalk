@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.reflex_dark_cropped)
+                .setSmallIcon(R.drawable.white_logo)
                 .setContentTitle("HALLO HALLO")
                 .setContentText("THIS IS YOUR CAPTAIN SPEAKING")
                 .setContentIntent(pendingIntent)

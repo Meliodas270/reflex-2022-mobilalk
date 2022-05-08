@@ -84,6 +84,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent playIntent = new Intent(this, PlayActivity.class);
 
         playIntent.putExtra("verysecretkey", KEY);
+        finish();
         startActivity(playIntent);
     }
 

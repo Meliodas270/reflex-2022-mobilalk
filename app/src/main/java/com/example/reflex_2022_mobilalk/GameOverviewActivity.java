@@ -38,6 +38,7 @@ public class GameOverviewActivity extends AppCompatActivity {
         gameScreenIntent.putExtra("verysecretkey", KEY);
         gameScreenIntent.putExtra("questionNum", 1);
         gameScreenIntent.putExtra("time", 120);
+        finish();
         startActivity(gameScreenIntent);
     }
 }

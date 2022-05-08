@@ -67,6 +67,7 @@ public class GameEndActivity extends AppCompatActivity {
     public void backToProfile(View view) {
         Intent profileIntent = new Intent(this, ProfileActivity.class);
         profileIntent.putExtra("verysecretkey", 42);
+        finish();
         startActivity(profileIntent);
     }
 }

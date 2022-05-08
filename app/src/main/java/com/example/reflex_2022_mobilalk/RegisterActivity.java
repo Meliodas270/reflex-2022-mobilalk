@@ -121,6 +121,9 @@ public class RegisterActivity extends AppCompatActivity {
         Intent playIntent = new Intent(this, PlayActivity.class);
 
         playIntent.putExtra("verysecretkey", KEY);
+
+        finish();
+
         startActivity(playIntent);
     }
 
@@ -128,6 +131,9 @@ public class RegisterActivity extends AppCompatActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event)  {
         if (keyCode == KeyEvent.KEYCODE_BACK ) {
             Intent mainIntent = new Intent(this, MainActivity.class);
+
+            finish();
+
             startActivity(mainIntent);
             return true;
         }
